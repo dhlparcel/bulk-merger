@@ -2,7 +2,7 @@ require "octokit"
 
 class BulkMerger
   def self.approve_unreviewed_pull_requests!
-    puts "Searching for Dependabot PRs for gem '#{gem_name}'"
+    puts "Searching for Scala-Steward PRs for gem '#{gem_name}'"
 
     unreviewed_pull_requests = search_pull_requests("review:none #{gem_name}")
 
@@ -72,7 +72,7 @@ class BulkMerger
   end
 
   def self.search_pull_requests(query)
-    client.search_issues("#{gem_name} archived:false is:pr user:alphagov state:open author:app/dependabot in:title #{query}").items
+    client.search_issues("#{gem_name} archived:false is:pr user:dhlparcel state:open author:jenkins-dhlparcel in:title #{query}").items
   end
 
   def self.client
