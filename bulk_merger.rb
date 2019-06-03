@@ -63,7 +63,7 @@ class BulkMerger
       repo = pr.repository_url.gsub("https://api.github.com/repos/", "")
 
       begin
-        client.merge_pull_request(repo, pr.number, '', :merge_method => "rebase")
+        client.merge_pull_request(repo, pr.number, '', :merge_method => "squash")
         puts "✅"
       rescue Octokit::MethodNotAllowed => e
         puts "❌ Failed to merge: #{e.message.inspect}"
